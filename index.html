@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana Tip Jar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            min-height: 100vh; 
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">☕ Tip Jar</h1>
+        <p class="text-gray-600 mb-6">Support my work with SOL</p>
+        
+        <div id="wallet-section">
+            <button id="connect-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg w-full transition">
+                Connect Wallet
+            </button>
+        </div>
+
+        <div id="tip-section" class="hidden space-y-4 mt-6">
+            <p class="text-sm text-gray-500">Connected: <span id="wallet-address" class="font-mono"></span></p>
+            
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="sendTip(0.01)" class="bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg font-semibold">0.01 SOL</button>
+                <button onclick="sendTip(0.05)" class="bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg font-semibold">0.05 SOL</button>
+                <button onclick="sendTip(0.1)" class="bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 rounded-lg font-semibold">0.1 SOL</button>
+            </div>
+            
+            <div class="flex gap-2">
+                <input type="number" id="custom-amount" placeholder="Custom amount" step="0.001" class="flex-1 border rounded-lg px-3 py-2">
+                <button onclick="sendCustomTip()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg">Send</button>
+            </div>
+            
+            <button id="disconnect-btn" class="text-red-500 text-sm hover:underline">Disconnect</button>
+        </div>
+
+        <div id="status" class="mt-4 text-sm font-medium"></div>
+    </div>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
